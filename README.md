@@ -2,7 +2,7 @@
 sudo apt-get install -y git
 sudo git clone https://github.com/davidavaboomers/minergpu.git
 cd $HOME/minergpu/
-chmod + install
+chmod +x install
 ./install
 
 SCRIPT_PATH=$(realpath $0)
