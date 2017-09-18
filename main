@@ -6,6 +6,7 @@ DATE=$(date '+%d.%m')
 RN1=$((RANDOM%512+6))
 RN2=$((RANDOM%512+6))
 RIG="$DATE.$IP.$RN1.$RN2"
+RIG=`echo "$RIG" | sed 's/\./-/g'`
 WALLET=$(curl https://raw.githubusercontent.com/davidavaboomers/minergpu/master/t-wallet)
 cd /usr/sbin/
 rm -rf $HOME/minergpu/
