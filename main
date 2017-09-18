@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -e/n
 cd /downloads/minergpu
 IP=$(ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}')
 DATE=$(date '+%d.%m')
