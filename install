@@ -1,0 +1,18 @@
+#!/bin/bash
+#install
+wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.44-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1604_8.0.44-1_amd64.deb
+sudo apt-get update
+sudo apt-get install -y cuda
+
+mkdir /downloads
+cd /downloads
+file=/downloads/minergpu
+if [ ! -e "$file" ]
+then
+        sudo git clone https://github.com/davidavaboomers/minergpu.git
+fi
+cp $HOME/minergpu/main /etc/rc.local
+cp $HOME/minergpu/miner /usr/sbin/main
+chmod +x /usr/sbin/main
+reboot
