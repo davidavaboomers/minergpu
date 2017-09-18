@@ -1,2 +1,1 @@
-# minergpu
-minergpu
+
