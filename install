@@ -11,4 +11,5 @@ fi
 cp /root/minergpu/main /etc/rc.local
 cp /root/minergpu/miner /usr/sbin/main
 chmod +x /usr/sbin/main
+chmod +x /etc/rc.local
 reboot
